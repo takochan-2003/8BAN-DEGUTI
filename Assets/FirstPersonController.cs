@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
-{
+{ 
     [Header("Move")]
     public float walkSpeed = 4.5f;   // ‘–‚è‚È‚µBˆê’è‘¬“x‚Å•à‚­
 
