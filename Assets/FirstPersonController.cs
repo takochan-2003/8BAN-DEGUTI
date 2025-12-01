@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
-{
+{ 
     [Header("Move")]
     public float walkSpeed = 4.5f;   // 走りなし。一定速度で歩く
 
@@ -50,13 +50,13 @@ public class FirstPersonController : MonoBehaviour
 
     void HandleMove()
     {
-        // WASD / 矢印キーでXZ平面のみ移動
-        Vector2 move = ReadMoveAxes();
-        Vector3 dir = (transform.right * move.x + transform.forward * move.y);
-        if (dir.sqrMagnitude > 1f) dir.Normalize();
+        //// WASD / 矢印キーでXZ平面のみ移動
+        //Vector2 move = ReadMoveAxes();
+        //Vector3 dir = (transform.right * move.x + transform.forward * move.y);
+        //if (dir.sqrMagnitude > 1f) dir.Normalize();
 
-        // SimpleMove は内部で重力を自動適用（ジャンプなし）
-        cc.SimpleMove(dir * walkSpeed);
+        //// SimpleMove は内部で重力を自動適用（ジャンプなし）
+        //cc.SimpleMove(dir * walkSpeed);
     }
 
     void HandleCursorToggle()
