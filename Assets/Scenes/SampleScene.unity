@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7254339718739612376, guid: caabad3c62f4bc444960f969861629db, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8718896217985229575, guid: caabad3c62f4bc444960f969861629db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -227,6 +231,10 @@ PrefabInstance:
     - target: {fileID: 590365134846491596, guid: 95ee915ba6f568a4aa717dcc248aa08a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563418584280894282, guid: 95ee915ba6f568a4aa717dcc248aa08a, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1899178475891509072, guid: 95ee915ba6f568a4aa717dcc248aa08a, type: 3}
       propertyPath: m_Name
