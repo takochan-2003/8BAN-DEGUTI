@@ -13,7 +13,7 @@ public class FadeManager : MonoBehaviour
 
     private Image fadeImage;
 
-    public System.Action onFadeInComplete; // フェードイン完了時のコールバック
+    public System.Action onFadeInComplete;  // フェードイン完了時のコールバック
     public System.Action onFadeOutComplete; // フェードアウト完了時のコールバック
 
     void Start()
@@ -26,9 +26,9 @@ public class FadeManager : MonoBehaviour
         }
 
         fadeImage.enabled = true; // 起動時にパネルを表示
-        alpha = 1.0f; // フェードイン用の初期状態
+        alpha = 1.0f;             // フェードイン用の初期状態
         UpdateAlpha();
-        StartFadeIn(); // シーン開始時にフェードイン
+        StartFadeIn();            // シーン開始時にフェードイン
     }
 
     void Update()
@@ -49,12 +49,20 @@ public class FadeManager : MonoBehaviour
         alpha = Mathf.Clamp01(alpha);
         UpdateAlpha();
 
-        if (alpha <= 0)
+        if (alpha <= 0f)
         {
             isFadingIn = false;
             fadeImage.enabled = false; // 完了後に非表示
 
-            onFadeInComplete?.Invoke(); // コールバックを呼び出し
+            // ▼ ここでコールバック
+            onFadeInComplete?.Invoke();
+
+            // ▼ ミニゲームがゲームオーバーならリトライ
+            if (MiniGameManager.Instance != null &&
+                MiniGameManager.Instance.IsGameOver)
+            {
+                MiniGameManager.Instance.RestartMiniGame();
+            }
         }
     }
 
@@ -65,11 +73,10 @@ public class FadeManager : MonoBehaviour
         alpha = Mathf.Clamp01(alpha);
         UpdateAlpha();
 
-        if (alpha >= 1)
+        if (alpha >= 1f)
         {
             isFadingOut = false;
-
-            onFadeOutComplete?.Invoke(); // コールバックを呼び出し
+            onFadeOutComplete?.Invoke();
         }
     }
 

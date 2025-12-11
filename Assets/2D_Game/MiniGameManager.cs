@@ -5,7 +5,7 @@ public class MiniGameManager : MonoBehaviour
     public static MiniGameManager Instance { get; private set; }
 
     [Header("UI")]
-    public GameObject gameOverUI;     // GameOver 表示パネル
+    public GameObject gameOverUI;
 
     [Header("Player")]
     public Transform player;
@@ -33,14 +33,6 @@ public class MiniGameManager : MonoBehaviour
             gameOverUI.SetActive(false);
     }
 
-    void Update()
-    {
-        if (IsGameOver && Input.GetKeyDown(KeyCode.Space))
-        {
-            RestartMiniGame();
-        }
-    }
-
     public void GameOver()
     {
         if (IsGameOver) return;
@@ -64,14 +56,17 @@ public class MiniGameManager : MonoBehaviour
         if (gameOverUI != null)
             gameOverUI.SetActive(false);
 
-        // プレイヤー再配置＆動きリセット
-        player.position = playerStartPos;
+        // プレイヤーを初期位置に戻す
+        if (player != null)
+            player.position = playerStartPos;
+
         if (playerRb != null)
             playerRb.velocity = Vector2.zero;
+
         if (playerJump != null)
             playerJump.enabled = true;
 
-        // 出てる針を全部消す
+        // 針リセット
         if (spikeSpawner != null)
             spikeSpawner.ResetSpikes();
     }
