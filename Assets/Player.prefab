@@ -167,6 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49de6fa166929a14dbbd04ff45f9725e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftClickText: {fileID: 0}
+  rightClickText: {fileID: 0}
+  isLeftClick: 0
+  isRightClick: 0
   walkSpeed: 2
 --- !u!1 &7254339718739612376
 GameObject:
@@ -185,7 +189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4612186383493235775
 Transform:
   m_ObjectHideFlags: 0
