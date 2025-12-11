@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5977851121803731729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 99554447118659995}
+  - component: {fileID: 9143939515359897836}
+  - component: {fileID: 7549040162007018797}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &99554447118659995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5977851121803731729}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.0649943, y: -3.9695616, z: 38.6371}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9143939515359897836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5977851121803731729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b16592d00d81a408296484ab6db517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unusualType: 00000000
+--- !u!114 &7549040162007018797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5977851121803731729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f1f02f017c637498da9bfa706b8d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unusualCount: 0
+  randomUnusualType: 0
+  isClick: 0
+  randomUnusual: 0
+  player: {fileID: 659976963684132432, guid: caabad3c62f4bc444960f969861629db, type: 3}
+  utilityPole: {fileID: 8239439223106901725, guid: 9426557dad611e1428d086c76d0616f1, type: 3}
+  post: {fileID: 3171741089952058060, guid: 2c5efa7878ab3e341bd03aceb8ba442b, type: 3}
+  cone: {fileID: 3059327631601873379, guid: 67d428eef71fb794da2d10658c0c1163, type: 3}
+  street1: {fileID: 3190674174618786482, guid: 67797a0e8e723994d860037da34a56ff, type: 3}
+  street2: {fileID: 324284297896861246, guid: daccde59893653043a8f05b7ecb32192, type: 3}
+  street3: {fileID: 8993830844021208208, guid: f751f1edda8b1bf42bd078fd08c538c0, type: 3}
+  street4: {fileID: 9027387134864237465, guid: 999c36bc00bbee446bbc13fd3a538f38, type: 3}
+  street5: {fileID: 7762223920391170268, guid: 062fbee424f5c1842b01840c575883d6, type: 3}
+  street6: {fileID: 4609599373652965640, guid: 9ebb38062c36c3443afba6af5c99b331, type: 3}
+  street7: {fileID: 5919044756659399427, guid: bba4199a5b69050438a40e7422ddddcd, type: 3}
+  street8: {fileID: 2500460618308888653, guid: 5924e9b62321c8244be8fa5882ee7f5a, type: 3}
+  street99: {fileID: 7000371153092654391, guid: fa2a3dbd8dbb0bb46b1fdc3dea5d3ed6, type: 3}
+  stop: {fileID: 5042440405731096161, guid: f6f5854c118c9da4082c9e73e892ee73, type: 3}

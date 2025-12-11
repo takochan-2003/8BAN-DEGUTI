@@ -16,7 +16,11 @@ public class PlayerJump2D : MonoBehaviour
 
     void Update()
     {
-        // スペースキーでジャンプ
+        if (MiniGameManager.Instance != null && MiniGameManager.Instance.IsGameOver)
+        {
+            return; // ゲームオーバー中はジャンプ無効
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();

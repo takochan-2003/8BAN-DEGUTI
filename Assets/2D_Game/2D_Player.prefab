@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1289649380224952784}
   - component: {fileID: 3875317680956972109}
   - component: {fileID: -4845373064348995118}
+  - component: {fileID: -5171638785305721697}
+  - component: {fileID: 6424961501649115635}
   m_Layer: 6
   m_Name: 2D_Player
   m_TagString: Untagged
@@ -173,3 +175,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 15
   groundTag: Ground
+--- !u!114 &-5171638785305721697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868538439475855354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f89f8f19fdf0c24ea62f58321fae578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spikeTag: Spike
+--- !u!114 &6424961501649115635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868538439475855354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f89f8f19fdf0c24ea62f58321fae578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spikeTag: Spike
