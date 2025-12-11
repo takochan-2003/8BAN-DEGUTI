@@ -88,6 +88,14 @@ public class FadeManager : MonoBehaviour
             color.a = alpha;
             fadeImage.color = color;
         }
+
+        // ★ 追加：フェード中はミニゲームを一時停止
+        if (MiniGameManager.Instance != null)
+        {
+            // 「ほぼ透明」を許容したければ 0.01f とかにしてもOK
+            bool paused = alpha > 0f;
+            MiniGameManager.Instance.SetPaused(paused);
+        }
     }
 
     public void StartFadeIn()

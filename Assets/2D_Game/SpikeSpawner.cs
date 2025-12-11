@@ -26,13 +26,15 @@ public class SpikeSpawner : MonoBehaviour
 
     void Update()
     {
-        if (MiniGameManager.Instance != null &&
-            MiniGameManager.Instance.IsGameOver)
-            return;
+        if (MiniGameManager.Instance != null)
+        {
+            if (MiniGameManager.Instance.IsGameOver || MiniGameManager.Instance.IsPaused)
+                return;   // ★ ポーズ中は新しい針を出さない
+        }
 
         timer -= Time.deltaTime;
 
-        if (timer <= 0)
+        if (timer <= 0f)
         {
             SpawnSpike();
             timer = Random.Range(minInterval, maxInterval);

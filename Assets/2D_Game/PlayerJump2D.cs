@@ -16,9 +16,10 @@ public class PlayerJump2D : MonoBehaviour
 
     void Update()
     {
-        if (MiniGameManager.Instance != null && MiniGameManager.Instance.IsGameOver)
+        if (MiniGameManager.Instance != null)
         {
-            return; // ゲームオーバー中はジャンプ無効
+            if (MiniGameManager.Instance.IsGameOver || MiniGameManager.Instance.IsPaused)
+                return;   // ★ ポーズ中は入力受け付けない
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -26,6 +27,7 @@ public class PlayerJump2D : MonoBehaviour
             Jump();
         }
     }
+
 
     void Jump()
     {
