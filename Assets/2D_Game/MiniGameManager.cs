@@ -1,36 +1,40 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MiniGameManager : MonoBehaviour
 {
     public static MiniGameManager Instance { get; private set; }
 
     [Header("UI")]
-    public GameObject gameOverUI;   // GameOver表示用のパネル（Canvasの子）
+    public GameObject gameOverUI;     // GameOver 表示パネル
+
+    [Header("Player")]
+    public Transform player;
+    private Vector3 playerStartPos;
+    private Rigidbody2D playerRb;
+    private PlayerJump2D playerJump;
+
+    [Header("Spike")]
+    public SpikeSpawner spikeSpawner;
 
     public bool IsGameOver { get; private set; } = false;
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Instance = this;
-        // シーンをまたがないなら DontDestroyOnLoad は不要
-        // DontDestroyOnLoad(gameObject);
+
+        if (player != null)
+        {
+            playerStartPos = player.position;
+            playerRb = player.GetComponent<Rigidbody2D>();
+            playerJump = player.GetComponent<PlayerJump2D>();
+        }
 
         if (gameOverUI != null)
-        {
-            gameOverUI.SetActive(false);  // 最初は非表示
-        }
+            gameOverUI.SetActive(false);
     }
 
     void Update()
     {
-        // GameOver中に R キーでリトライ
         if (IsGameOver && Input.GetKeyDown(KeyCode.Space))
         {
             RestartMiniGame();
@@ -44,32 +48,31 @@ public class MiniGameManager : MonoBehaviour
         IsGameOver = true;
 
         if (gameOverUI != null)
-        {
             gameOverUI.SetActive(true);
-        }
 
-        // 必要ならプレイヤーの動きを止めるなど
-        var player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            var rb = player.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.velocity = Vector2.zero;
-            }
+        if (playerRb != null)
+            playerRb.velocity = Vector2.zero;
 
-            var jump = player.GetComponent<PlayerJump2D>();
-            if (jump != null)
-            {
-                jump.enabled = false;
-            }
-        }
+        if (playerJump != null)
+            playerJump.enabled = false;
     }
 
     public void RestartMiniGame()
     {
-        // 今のシーンをそのまま再読み込み
-        Scene current = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(current.buildIndex);
+        IsGameOver = false;
+
+        if (gameOverUI != null)
+            gameOverUI.SetActive(false);
+
+        // プレイヤー再配置＆動きリセット
+        player.position = playerStartPos;
+        if (playerRb != null)
+            playerRb.velocity = Vector2.zero;
+        if (playerJump != null)
+            playerJump.enabled = true;
+
+        // 出てる針を全部消す
+        if (spikeSpawner != null)
+            spikeSpawner.ResetSpikes();
     }
 }

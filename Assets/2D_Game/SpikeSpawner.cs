@@ -2,55 +2,57 @@ using UnityEngine;
 
 public class SpikeSpawner : MonoBehaviour
 {
-    [Header("Spike Settings")]
-    public GameObject spikePrefab;   // Spike プレハブ
-    public float spawnY = -1.97f;    // 針の高さ（指定どおり固定）
+    public GameObject spikePrefab;
+    public Camera miniGameCamera;
 
-    [Header("Spawn Interval")]
-    public float minSpawnInterval = 1.0f; // 針が出る最短間隔（秒）
-    public float maxSpawnInterval = 2.0f; // 針が出る最長間隔（秒）
+    public float spawnY = -1.97f;
+    public float minInterval = 1f;
+    public float maxInterval = 2f;
 
-    [Header("Camera")]
-    public Camera miniGameCamera;    // MiniGame 用のカメラ（DebugMiniGameCamera）
-
-    private float spawnX;            // 画面右の少し外側
-    private float timer;             // 次のスポーンまでのタイマー
+    float spawnX;
+    float timer;
 
     void Start()
     {
         if (miniGameCamera == null)
-        {
             miniGameCamera = Camera.main;
-        }
 
-        // カメラの横幅から「画面右端」を計算
-        float halfH = miniGameCamera.orthographicSize;       // = 5
-        float halfW = halfH * miniGameCamera.aspect;         // ≒ 8.9 (16:9)
+        float halfH = miniGameCamera.orthographicSize;
+        float halfW = halfH * miniGameCamera.aspect;
 
-        // 画面右端より少し外（+2）でスポーンする
-        spawnX = halfW + 2f;
-
-        // 最初のスポーンまでの時間をランダムに決める
-        timer = Random.Range(minSpawnInterval, maxSpawnInterval);
+        spawnX = halfW + 1.5f; // 画面右の外で出す
+        timer = Random.Range(minInterval, maxInterval);
     }
 
     void Update()
     {
-        // タイマーを減らす
+        if (MiniGameManager.Instance != null &&
+            MiniGameManager.Instance.IsGameOver)
+            return;
+
         timer -= Time.deltaTime;
 
-        if (timer <= 0f)
+        if (timer <= 0)
         {
             SpawnSpike();
-
-            // 次のスポーンまでの時間を再度ランダムに決める
-            timer = Random.Range(minSpawnInterval, maxSpawnInterval);
+            timer = Random.Range(minInterval, maxInterval);
         }
     }
 
     void SpawnSpike()
     {
         Vector3 pos = new Vector3(spawnX, spawnY, 0f);
-        Instantiate(spikePrefab, pos, Quaternion.identity);
+        Instantiate(spikePrefab, pos, Quaternion.identity, transform);
+    }
+
+    // ミニゲームだけリセット
+    public void ResetSpikes()
+    {
+        // すでに出ている針を全削除
+        for (int i = transform.childCount - 1; i >= 0; i--)
+            Destroy(transform.GetChild(i).gameObject);
+
+        // タイマーも初期化
+        timer = Random.Range(minInterval, maxInterval);
     }
 }

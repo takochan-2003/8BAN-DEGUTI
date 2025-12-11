@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 525529455}
     - target: {fileID: 7254339718739612376, guid: caabad3c62f4bc444960f969861629db, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718896217985229575, guid: caabad3c62f4bc444960f969861629db, type: 3}
       propertyPath: m_LocalPosition.x
@@ -305,18 +305,18 @@ PrefabInstance:
     - target: {fileID: 1563418584280894282, guid: 95ee915ba6f568a4aa717dcc248aa08a, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8400000, guid: f61d0edf523ca9442aca5fe30cd90c35, type: 2}
     - target: {fileID: 1563418584280894282, guid: 95ee915ba6f568a4aa717dcc248aa08a, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.035294056
+      value: 0.990566
       objectReference: {fileID: 0}
     - target: {fileID: 1563418584280894282, guid: 95ee915ba6f568a4aa717dcc248aa08a, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 1
+      value: 0.7302722
       objectReference: {fileID: 0}
     - target: {fileID: 1563418584280894282, guid: 95ee915ba6f568a4aa717dcc248aa08a, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0
+      value: 0.41585082
       objectReference: {fileID: 0}
     - target: {fileID: 1899178475891509072, guid: 95ee915ba6f568a4aa717dcc248aa08a, type: 3}
       propertyPath: m_Name
@@ -792,6 +792,11 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 1563418584280894282, guid: 95ee915ba6f568a4aa717dcc248aa08a, type: 3}
   m_PrefabInstance: {fileID: 310778222}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1088229930 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7424414320060134890, guid: 0cc20234ec572da44b2cf1531b967738, type: 3}
+  m_PrefabInstance: {fileID: 788925243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1186398448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1218,6 +1223,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2054190550 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4690810670017852421, guid: 8a4c501066fd30748bd079ab68c5f267, type: 3}
+  m_PrefabInstance: {fileID: 5536905086216706054}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddc3df9195045945a36acc2f0211e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &786444577559423209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1486,9 +1502,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1077688034}
     - target: {fileID: 6658502517902623401, guid: 8a4c501066fd30748bd079ab68c5f267, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1088229930}
+    - target: {fileID: 6658502517902623401, guid: 8a4c501066fd30748bd079ab68c5f267, type: 3}
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 1562723380}
+    - target: {fileID: 6658502517902623401, guid: 8a4c501066fd30748bd079ab68c5f267, type: 3}
+      propertyPath: spikeSpawner
+      value: 
+      objectReference: {fileID: 2054190550}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
