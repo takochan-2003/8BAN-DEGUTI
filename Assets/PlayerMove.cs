@@ -95,7 +95,7 @@ public class PlayerMove : MonoBehaviour
 
         if (unusualManager.isClear == true)
         {
-            walkSpeed = 2.0f;
+            walkSpeed = 0.0f;
         }
 
     }
