@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spikePrefab: {fileID: 3261988602064983219, guid: 89af15f3534301844bff55c7b16c26af, type: 3}
-  spawnY: -1.97
-  minSpawnInterval: 1
-  maxSpawnInterval: 4
   miniGameCamera: {fileID: 0}
+  spawnY: -1.97
+  minInterval: 1
+  maxInterval: 2
 --- !u!114 &6658502517902623401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,3 +63,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 0}
+  player: {fileID: 0}
+  spikeSpawner: {fileID: 4690810670017852421}
