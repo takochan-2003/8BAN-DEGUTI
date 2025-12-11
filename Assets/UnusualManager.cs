@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -437,16 +436,21 @@ public class UnusualManager : MonoBehaviour
                         
                     }
                     break;
-                case 4:
-                    if (player.transform.position.x<=-7|| player.transform.position.x>=7)
-                    {
-                        isClear = true;
-                    }
-                    break;
+                    
             }
 
-            
+            if (unusualCount == 4)
+            {
+                if (player.transform.position.x <= -7 || player.transform.position.x >= 7)
+                {
+                    isClear = true;
+                }
+            }
+
         }
+
+        
+
         else
         {
             isClick = false;

@@ -7,7 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMove : MonoBehaviour
 {
-
+    public TextMeshProUGUI gameClear;
     public TextMeshProUGUI leftClickText;
     public TextMeshProUGUI rightClickText;
     private FadeManager fadeManager;
@@ -30,6 +30,7 @@ public class PlayerMove : MonoBehaviour
         rightClickText.enabled = false;
         isClick = false;
         walkSpeed = 2.0f;
+        gameClear.enabled = false;
     }
 
     // Update is called once per frame
@@ -96,6 +97,12 @@ public class PlayerMove : MonoBehaviour
         if (unusualManager.isClear == true)
         {
             walkSpeed = 0.0f;
+            gameClear.enabled = true;
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene");
+            }
+            
         }
 
     }
