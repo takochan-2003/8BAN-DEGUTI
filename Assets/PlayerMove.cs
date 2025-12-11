@@ -1,24 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerMove : MonoBehaviour
 {
+
+    public TextMeshProUGUI leftClickText;
+    public TextMeshProUGUI rightClickText;
     private FadeManager fadeManager;
     bool isClick = false;
-    bool isLeftClick = false;
-    bool isRightClick = false;
+    public bool isLeftClick = false;
+    public bool isRightClick = false;
     Vector3 targetPosition = new Vector3(0.0f,0.0f,22.5f);
     Vector3 targetRightPosition = new Vector3(12.0f, 0.0f, 22.5f);
     Vector3 targetLeftPosition = new Vector3(-12.0f, 0.0f, 22.5f);
-    public float walkSpeed = 2.0f;
+    public float walkSpeed;
     private CharacterController cc;
     // Start is called before the first frame update
     void Start()
     {
         cc = GetComponent<CharacterController>();
         fadeManager = FindObjectOfType<FadeManager>();
+        leftClickText.enabled = false;
+        rightClickText.enabled = false;
     }
 
     // Update is called once per frame
@@ -26,9 +33,12 @@ public class PlayerMove : MonoBehaviour
     {
         if(transform.position.z < 22.5f){
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, walkSpeed * Time.deltaTime);
+            
         }
         else
         {
+            leftClickText.enabled = true;
+            rightClickText.enabled = true;
             if (isClick == false)
             {
                 if (isLeftClick == false)
@@ -44,6 +54,8 @@ public class PlayerMove : MonoBehaviour
             if (isLeftClick == true)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetLeftPosition, walkSpeed * Time.deltaTime);
+                leftClickText.enabled = false;
+                rightClickText.enabled = false;
             }
 
 
@@ -62,6 +74,8 @@ public class PlayerMove : MonoBehaviour
             if (isRightClick == true)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetRightPosition, walkSpeed * Time.deltaTime);
+                leftClickText.enabled = false;
+                rightClickText.enabled = false;
             }
             
         }
