@@ -82,6 +82,7 @@ public class PlayerMove : MonoBehaviour
         
         if(transform.position == targetLeftPosition || transform.position == targetRightPosition)
         {
+
             isClick = false;
             isLeftClick = false;
             isRightClick = false;
