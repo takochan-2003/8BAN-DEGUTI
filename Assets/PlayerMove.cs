@@ -20,12 +20,16 @@ public class PlayerMove : MonoBehaviour
     public float walkSpeed;
     private CharacterController cc;
     // Start is called before the first frame update
+    UnusualManager unusualManager;
     void Start()
     {
+        unusualManager = FindObjectOfType<UnusualManager>();
         cc = GetComponent<CharacterController>();
         fadeManager = FindObjectOfType<FadeManager>();
         leftClickText.enabled = false;
         rightClickText.enabled = false;
+        isClick = false;
+        walkSpeed = 2.0f;
     }
 
     // Update is called once per frame
@@ -87,6 +91,11 @@ public class PlayerMove : MonoBehaviour
             isRightClick = false;
             transform.position = new Vector3(0.0f, 0.0f, -20.0f);
             fadeManager.StartFadeIn();
+        }
+
+        if (unusualManager.isClear == true)
+        {
+            walkSpeed = 2.0f;
         }
 
     }
