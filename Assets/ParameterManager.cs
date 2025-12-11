@@ -16,7 +16,7 @@ public class ParameterManager : MonoBehaviour
         unusualType[2] = true;
         unusualType[3] = true;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
