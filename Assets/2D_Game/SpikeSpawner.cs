@@ -6,8 +6,8 @@ public class SpikeSpawner : MonoBehaviour
     public Camera miniGameCamera;
 
     public float spawnY = -1.97f;
-    public float minInterval = 1f;
-    public float maxInterval = 2f;
+    public float minInterval = 2f;
+    public float maxInterval = 4f;
 
     float spawnX;
     float timer;

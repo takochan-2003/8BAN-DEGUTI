@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerJump2D : MonoBehaviour
 {
-    public float jumpForce = 7f;          // ジャンプの強さ
+    public float jumpForce = 10f;          // ジャンプの強さ
     public string groundTag = "Ground";   // 地面のタグ
 
     private Rigidbody2D rb;
