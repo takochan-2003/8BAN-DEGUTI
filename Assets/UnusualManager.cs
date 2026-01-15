@@ -6,6 +6,8 @@ using static UnityEngine.GraphicsBuffer;
 public class UnusualManager : MonoBehaviour
 {
 
+    public bool isClear;
+
     //ˆÙ•Ï‚©‚Ç‚¤‚©
     bool isUnusual;
     bool isUnusualCheck;
@@ -53,11 +55,13 @@ public class UnusualManager : MonoBehaviour
     GameObject unusualPost;
     GameObject unusualStop;
 
+    private MiniGameManager miniGameManager;
     private ParameterManager parameterManager;
     private PlayerMove playerMove;
     // Start is called before the first frame update
     void Start()
     {
+        isClear = false;
         isStreet1Spawn = true;
         isStreet2Spawn = false;
         isStreet3Spawn = false;
@@ -88,6 +92,7 @@ public class UnusualManager : MonoBehaviour
         unusualStop = null;
         playerMove = FindObjectOfType<PlayerMove>();
         parameterManager = FindObjectOfType<ParameterManager>();
+        miniGameManager = FindObjectOfType<MiniGameManager>();
         Instantiate(utilityPole, new Vector3(0, 5, 25.5f), Quaternion.Euler(0, 90, 0));
         Instantiate(post, new Vector3(3.7f,-0.8f, 13), Quaternion.Euler(0, 90, 0));
         Instantiate(cone, new Vector3(1.4f, -0.6f, 25.6f), Quaternion.Euler(0, 0, 0));
@@ -337,9 +342,18 @@ public class UnusualManager : MonoBehaviour
                     {
                         if (playerMove.isLeftClick == true)
                         {
-                            unusualCount += 1;
-                            isClick = true;
-                            isUnusualStart = true;
+                            if (miniGameManager.IsGameOver == true)
+                            {
+                                unusualCount = 0;
+                                isClick = true;
+                                isUnusualStart = true;
+                            }
+                            else
+                            {
+                                unusualCount += 1;
+                                isClick = true;
+                                isUnusualStart = true;
+                            }
                         }
                         if (playerMove.isRightClick == true)
                         {
@@ -347,6 +361,7 @@ public class UnusualManager : MonoBehaviour
                             isClick = true;
                             isUnusualStart = true;
                         }
+                        
                     }
                     break;
                 case 1:
@@ -359,9 +374,18 @@ public class UnusualManager : MonoBehaviour
                         }
                         if (playerMove.isRightClick == true)
                         {
-                            unusualCount += 1;
-                            isClick = true;
+                            if (miniGameManager.IsGameOver == true)
+                            {
+                                unusualCount = 0;
+                                isClick = true;
+                            }
+                            else
+                            {
+                                unusualCount += 1;
+                                isClick = true;
+                            }
                         }
+                        
                     }
                     break;
                 case 2:
@@ -374,9 +398,18 @@ public class UnusualManager : MonoBehaviour
                         }
                         if (playerMove.isRightClick == true)
                         {
-                            unusualCount += 1;
-                            isClick = true;
+                            if (miniGameManager.IsGameOver == true)
+                            {
+                                unusualCount = 0;
+                                isClick = true;
+                            }
+                            else
+                            {
+                                unusualCount += 1;
+                                isClick = true;
+                            }
                         }
+                        
                     }
                     break;
                 case 3:
@@ -389,15 +422,35 @@ public class UnusualManager : MonoBehaviour
                         }
                         if (playerMove.isRightClick == true)
                         {
-                            unusualCount += 1;
-                            isClick = true;
+                            if (miniGameManager.IsGameOver == true)
+                            {
+                                unusualCount = 0;
+                                isClick = true;
+                            }
+                            else
+                            {
+                                unusualCount += 1;
+                                isClick = true;
+                            }
                         }
+                        
                     }
                     break;
+                    
             }
 
-            
+            if (unusualCount == 4)
+            {
+                if (player.transform.position.x <= -7 || player.transform.position.x >= 7)
+                {
+                    isClear = true;
+                }
+            }
+
         }
+
+        
+
         else
         {
             isClick = false;
