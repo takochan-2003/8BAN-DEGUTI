@@ -29,7 +29,6 @@ public class PlayerMove : MonoBehaviour
         leftClickText.enabled = false;
         rightClickText.enabled = false;
         isClick = false;
-        walkSpeed = 2.0f;
         gameClear.enabled = false;
     }
 
