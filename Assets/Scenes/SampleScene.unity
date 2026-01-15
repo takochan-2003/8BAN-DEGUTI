@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -399630946101190943, guid: caabad3c62f4bc444960f969861629db, type: 3}
+      propertyPath: walkSpeed
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 659976963684132432, guid: caabad3c62f4bc444960f969861629db, type: 3}
       propertyPath: m_Name
       value: Player
@@ -501,6 +505,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4845373064348995118, guid: 0cc20234ec572da44b2cf1531b967738, type: 3}
+      propertyPath: jumpForce
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5868538439475855354, guid: 0cc20234ec572da44b2cf1531b967738, type: 3}
       propertyPath: m_Name
       value: 2D_Player
@@ -1267,6 +1275,14 @@ PrefabInstance:
     - target: {fileID: 4129061924922892534, guid: 8a4c501066fd30748bd079ab68c5f267, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690810670017852421, guid: 8a4c501066fd30748bd079ab68c5f267, type: 3}
+      propertyPath: maxInterval
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690810670017852421, guid: 8a4c501066fd30748bd079ab68c5f267, type: 3}
+      propertyPath: minInterval
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4690810670017852421, guid: 8a4c501066fd30748bd079ab68c5f267, type: 3}
       propertyPath: miniGameCamera
