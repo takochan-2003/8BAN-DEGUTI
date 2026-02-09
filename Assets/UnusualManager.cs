@@ -297,7 +297,7 @@ public class UnusualManager : MonoBehaviour
                         Destroy(streetSpawns[5]);
                         Destroy(streetSpawns[6]);
                         Destroy(streetSpawns[7]);
-                        if (isStreet4Spawn == false)
+                        if (isStreet6Spawn == false)
                         {
                             streetSpawns[5] = Instantiate(street6, new Vector3(-2.5f, 0.2f, 26.4f), Quaternion.Euler(90, 180, 0));
                             isStreet6Spawn = true;
