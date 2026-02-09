@@ -48,12 +48,26 @@ public class UnusualManager : MonoBehaviour
     public GameObject street8;
     public GameObject street99;
     public GameObject stop;
+    public GameObject kanban;
+    public GameObject mistake;
+    public GameObject entixyuu;
+    public GameObject gomibako;
+    public GameObject donatu;
+    public GameObject dosei;
+    public GameObject bicycle;
+    public GameObject manhole;
+    public GameObject manhole1;
+    public GameObject pot;
 
     GameObject firstStreetSpawn;
     GameObject[] streetSpawns = new GameObject[8];
     GameObject[] street99Spawns = new GameObject[13];
     GameObject unusualPost;
     GameObject unusualStop;
+    GameObject unusualDonatu;
+    GameObject unusualDosei;
+    GameObject unusualManhole1;
+    GameObject unusualPot;
 
     private MiniGameManager miniGameManager;
     private ParameterManager parameterManager;
@@ -62,7 +76,7 @@ public class UnusualManager : MonoBehaviour
     void Start()
     {
         isClear = false;
-        isStreet1Spawn = true;
+        isStreet1Spawn = false;
         isStreet2Spawn = false;
         isStreet3Spawn = false;
         isStreet4Spawn = false;
@@ -90,17 +104,43 @@ public class UnusualManager : MonoBehaviour
         }
         unusualPost = null;
         unusualStop = null;
+        unusualDonatu = null;
         playerMove = FindObjectOfType<PlayerMove>();
         parameterManager = FindObjectOfType<ParameterManager>();
         miniGameManager = FindObjectOfType<MiniGameManager>();
         Instantiate(utilityPole, new Vector3(0, 5, 25.5f), Quaternion.Euler(0, 90, 0));
+        Instantiate(utilityPole, new Vector3(0, 5, -25.5f), Quaternion.Euler(0, 90, 0));
         Instantiate(post, new Vector3(3.7f,-0.8f, 13), Quaternion.Euler(0, 90, 0));
         Instantiate(cone, new Vector3(1.4f, -0.6f, 25.6f), Quaternion.Euler(0, 0, 0));
         Instantiate(cone, new Vector3(1.4f, -0.45f, 25.6f), Quaternion.Euler(0, 0, 0));
         Instantiate(cone, new Vector3(-3.5f, -0.6f, -1), Quaternion.Euler(0, 0, 0));
         Instantiate(cone, new Vector3(-3.5f, -0.6f, 3.5f), Quaternion.Euler(0, 0, 0));
         Instantiate(cone, new Vector3(-1.5f, -0.6f, 1.25f), Quaternion.Euler(0, 0, 0));
-        firstStreetSpawn=Instantiate(street1, new Vector3(-2.5f, 0.2f, 26.4f), Quaternion.Euler(90, 180, 0));
+        Instantiate(cone, new Vector3(2.9f, -0.6f, 25.2f), Quaternion.Euler(6, 26, -110));
+        Instantiate(kanban, new Vector3(-5f, 0.38f, 26f), Quaternion.Euler(0, 90, 0));
+        Instantiate(mistake, new Vector3(0f, 0.75f, 24.73f), Quaternion.Euler(90, 0, -180));
+        Instantiate(entixyuu, new Vector3(-3.72f, -0.37f, 10.0f), Quaternion.Euler(0, 0, 0));
+        Instantiate(entixyuu, new Vector3(-2.5f, -0.37f, 10.0f), Quaternion.Euler(0, 0, 0));
+        Instantiate(entixyuu, new Vector3(-3.1f, 0.7f, 10.0f), Quaternion.Euler(0, 0, 0));
+        Instantiate(gomibako, new Vector3(-3f, -0.3f, 14.5f), Quaternion.Euler(0, 90, 0));
+        Instantiate(gomibako, new Vector3(-3.4f, -0.3f, 16.5f), Quaternion.Euler(0, 90, 0));
+        Instantiate(gomibako, new Vector3(3.6f, -0.3f, 18.5f), Quaternion.Euler(0, 0, 0));
+        Instantiate(gomibako, new Vector3(3.0f, -0.3f, -16.5f), Quaternion.Euler(0, 0, 0));
+        Instantiate(bicycle, new Vector3(3.8f, -0.55f, 6.0f), Quaternion.Euler(16, 90, 0));
+        Instantiate(bicycle, new Vector3(3.0f, -0.82f, 9.0f), Quaternion.Euler(80, 70, 0));
+        Instantiate(manhole, new Vector3(-3.42f, -1f, 1.15f), Quaternion.Euler(0, 0, 0));
+        Instantiate(pot, new Vector3(5f, 1.75f, 19.5f), Quaternion.Euler(0, 0, 0));
+        Instantiate(pot, new Vector3(5f, 1.75f, 18.5f), Quaternion.Euler(0, 0, 0));
+        Instantiate(pot, new Vector3(5f, 1.75f, 17.5f), Quaternion.Euler(0, 0, 0));
+        Instantiate(pot, new Vector3(5f, 1.75f, 16.5f), Quaternion.Euler(0, 0, 0));
+        Instantiate(pot, new Vector3(5f, 1.75f, 15.5f), Quaternion.Euler(0, 0, 0));
+        Instantiate(pot, new Vector3(-5f, 1.75f, 19.5f), Quaternion.Euler(0, 0, 0));
+        Instantiate(pot, new Vector3(-5f, 1.75f, 18.0f), Quaternion.Euler(0, 0, 0));
+        Instantiate(pot, new Vector3(-5f, 1.75f, 16.5f), Quaternion.Euler(0, 0, 0));
+        Instantiate(pot, new Vector3(-2.5f, 1.75f, 27f), Quaternion.Euler(0, 0, 0));
+        Instantiate(pot, new Vector3(-1.0f, 1.75f, 27f), Quaternion.Euler(0, 0, 0));
+        Instantiate(pot, new Vector3(3.0f, 1.75f, 27f), Quaternion.Euler(0, 0, 0));
+        streetSpawns[0] = Instantiate(street1, new Vector3(-2.5f, 0.2f, 26.4f), Quaternion.Euler(90, 180, 0));
     }
 
     // Update is called once per frame
@@ -213,6 +253,56 @@ public class UnusualManager : MonoBehaviour
                             isStreet4Spawn = true;
                         }
                     }
+                    if (unusualCount == 4)
+                    {
+
+                        isStreet1Spawn = false;
+                        isStreet2Spawn = false;
+                        isStreet3Spawn = false;
+                        isStreet4Spawn = false;
+                        isStreet6Spawn = false;
+                        isStreet7Spawn = false;
+                        isStreet8Spawn = false;
+                        isStreet99Spawn = false;
+                        Destroy(firstStreetSpawn);
+                        Destroy(streetSpawns[0]);
+                        Destroy(streetSpawns[1]);
+                        Destroy(streetSpawns[2]);
+                        Destroy(streetSpawns[4]);
+                        Destroy(streetSpawns[5]);
+                        Destroy(streetSpawns[6]);
+                        Destroy(streetSpawns[7]);
+                        if (isStreet5Spawn == false)
+                        {
+                            streetSpawns[4] = Instantiate(street5, new Vector3(-2.5f, 0.2f, 26.4f), Quaternion.Euler(90, 180, 0));
+                            isStreet5Spawn = true;
+                        }
+                    }
+                    if (unusualCount == 5)
+                    {
+
+                        isStreet1Spawn = false;
+                        isStreet2Spawn = false;
+                        isStreet3Spawn = false;
+                        isStreet4Spawn = false;
+                        isStreet5Spawn = false;
+                        isStreet7Spawn = false;
+                        isStreet8Spawn = false;
+                        isStreet99Spawn = false;
+                        Destroy(firstStreetSpawn);
+                        Destroy(streetSpawns[0]);
+                        Destroy(streetSpawns[1]);
+                        Destroy(streetSpawns[2]);
+                        Destroy(streetSpawns[4]);
+                        Destroy(streetSpawns[5]);
+                        Destroy(streetSpawns[6]);
+                        Destroy(streetSpawns[7]);
+                        if (isStreet4Spawn == false)
+                        {
+                            streetSpawns[5] = Instantiate(street6, new Vector3(-2.5f, 0.2f, 26.4f), Quaternion.Euler(90, 180, 0));
+                            isStreet6Spawn = true;
+                        }
+                    }
                     randomUnusual = Random.Range(0, 10);
                     isRandom = true;
                 }
@@ -251,6 +341,27 @@ public class UnusualManager : MonoBehaviour
                     {
                         Destroy(unusualPost);
                     }
+
+                    if (unusualDonatu != null)
+                    {
+                        Destroy(unusualDonatu);
+                    }
+
+                    if (unusualDosei != null)
+                    {
+                        Destroy(unusualDosei);
+                    }
+
+                    if (unusualManhole1 != null)
+                    {
+                        Destroy(unusualManhole1);
+                    }
+
+                    if (unusualPot != null)
+                    {
+                        Destroy(unusualPot);
+                    }
+
                 }
 
                 //ˆÙ•Ï2
@@ -282,9 +393,30 @@ public class UnusualManager : MonoBehaviour
                     {
                         Destroy(unusualPost);
                     }
+
+                    if (unusualDonatu != null)
+                    {
+                        Destroy(unusualDonatu);
+                    }
+
+                    if (unusualDosei != null)
+                    {
+                        Destroy(unusualDosei);
+                    }
+
+                    if (unusualManhole1 != null)
+                    {
+                        Destroy(unusualManhole1);
+                    }
+
+                    if (unusualPot != null)
+                    {
+                        Destroy(unusualPot);
+                    }
+
                 }
 
-                //ˆÙ•Ï2
+                //ˆÙ•Ï3
                 if (randomUnusualType == 3)
                 {
                     if (unusualPost == null) { 
@@ -303,7 +435,204 @@ public class UnusualManager : MonoBehaviour
                             Destroy(street99Spawns[i]);
                         }
                     }
+
+                    if (unusualDonatu != null)
+                    {
+                       Destroy(unusualDonatu);
+                    }
+
+                    if (unusualDosei != null)
+                    {
+                        Destroy(unusualDosei);
+                    }
+
+                    if (unusualManhole1 != null)
+                    {
+                        Destroy(unusualManhole1);
+                    }
+
+                    if (unusualPot != null)
+                    {
+                        Destroy(unusualPot);
+                    }
+
                 }
+
+                //ˆÙ•Ï4
+                if (randomUnusualType == 4)
+                {
+                    if (unusualDonatu == null)
+                    {
+                        unusualDonatu=Instantiate(donatu, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.Euler(0, 0, 0));
+                    }
+
+                    if (unusualStop != null)
+                    {
+                        Destroy(unusualStop);
+                    }
+
+                    if (street99Spawns[0] != null)
+                    {
+                        for (int i = 0; i < 13; i++)
+                        {
+                            Destroy(street99Spawns[i]);
+                        }
+                    }
+
+                    if (unusualPost != null)
+                    {
+                        Destroy(unusualPost);
+                    }
+
+                    if (unusualDosei != null)
+                    {
+                        Destroy(unusualDosei);
+                    }
+
+                    if (unusualManhole1 != null)
+                    {
+                        Destroy(unusualManhole1);
+                    }
+
+                    if (unusualPot != null)
+                    {
+                        Destroy(unusualPot);
+                    }
+
+                }
+
+                //ˆÙ•Ï5
+                if (randomUnusualType == 5)
+                {
+
+                    if (unusualDosei == null)
+                    {
+                        unusualDosei = Instantiate(dosei, new Vector3(0.0f, 300.0f, 0.0f), Quaternion.Euler(0, 0, 180));
+                    }
+
+                    if (unusualStop != null)
+                    {
+                        Destroy(unusualStop);
+                    }
+
+                    if (street99Spawns[0] != null)
+                    {
+                        for (int i = 0; i < 13; i++)
+                        {
+                            Destroy(street99Spawns[i]);
+                        }
+                    }
+
+                    if (unusualPost != null)
+                    {
+                        Destroy(unusualPost);
+                    }
+
+                    if (unusualDonatu != null)
+                    {
+                        Destroy(unusualDonatu);
+                    }
+
+                    if(unusualManhole1 != null)
+                    {
+                        Destroy(unusualManhole1);
+                    }
+
+                    if (unusualPot != null)
+                    {
+                        Destroy(unusualPot);
+                    }
+
+                }
+
+                //ˆÙ•Ï6
+                if (randomUnusualType == 6)
+                {
+
+                    if (unusualManhole1 == null)
+                    {
+                        unusualManhole1 = Instantiate(manhole1, new Vector3(-3.42f, -0.95f, 1.15f), Quaternion.Euler(0, 0, 0));
+                    }
+
+                    if (unusualStop != null)
+                    {
+                        Destroy(unusualStop);
+                    }
+
+                    if (street99Spawns[0] != null)
+                    {
+                        for (int i = 0; i < 13; i++)
+                        {
+                            Destroy(street99Spawns[i]);
+                        }
+                    }
+
+                    if (unusualPost != null)
+                    {
+                        Destroy(unusualPost);
+                    }
+
+                    if (unusualDonatu != null)
+                    {
+                        Destroy(unusualDonatu);
+                    }
+
+                    if (unusualDosei != null)
+                    {
+                        Destroy(unusualDosei);
+                    }
+
+                    if (unusualPot != null)
+                    {
+                        Destroy(unusualPot);
+                    }
+
+                }
+
+                //ˆÙ•Ï7
+                if (randomUnusualType == 7)
+                {
+
+                    if (unusualPot == null)
+                    {
+                        unusualPot = Instantiate(pot, new Vector3(-4.0f, 1.75f, 27f), Quaternion.Euler(0, 0, 0));
+                    }
+
+                    if (unusualStop != null)
+                    {
+                        Destroy(unusualStop);
+                    }
+
+                    if (street99Spawns[0] != null)
+                    {
+                        for (int i = 0; i < 13; i++)
+                        {
+                            Destroy(street99Spawns[i]);
+                        }
+                    }
+
+                    if (unusualPost != null)
+                    {
+                        Destroy(unusualPost);
+                    }
+
+                    if (unusualDonatu != null)
+                    {
+                        Destroy(unusualDonatu);
+                    }
+
+                    if (unusualManhole1 != null)
+                    {
+                        Destroy(unusualManhole1);
+                    }
+
+                    if (unusualDosei != null)
+                    {
+                        Destroy(unusualDosei);
+                    }
+
+                }
+
             }
             if (randomUnusual <= 1)
             {
@@ -328,6 +657,27 @@ public class UnusualManager : MonoBehaviour
                 {
                     Destroy(unusualPost);
                 }
+
+                if (unusualDonatu != null)
+                {
+                    Destroy(unusualDonatu);
+                }
+
+                if (unusualDosei != null)
+                {
+                    Destroy(unusualDosei);
+                }
+
+                if (unusualManhole1 != null)
+                {
+                    Destroy(unusualManhole1);
+                }
+
+                if (unusualPot != null)
+                {
+                    Destroy(unusualPot);
+                }
+
             }
 
         }
@@ -436,10 +786,114 @@ public class UnusualManager : MonoBehaviour
                         
                     }
                     break;
-                    
+                case 4:
+                    if (isClick == false)
+                    {
+                        if (playerMove.isLeftClick == true)
+                        {
+                            unusualCount = 0;
+                            isClick = true;
+                        }
+                        if (playerMove.isRightClick == true)
+                        {
+                            if (miniGameManager.IsGameOver == true)
+                            {
+                                unusualCount = 0;
+                                isClick = true;
+                            }
+                            else
+                            {
+                                unusualCount += 1;
+                                isClick = true;
+                            }
+                        }
+
+                    }
+                    break;
+                case 5:
+                    if (isClick == false)
+                    {
+                        if (playerMove.isLeftClick == true)
+                        {
+                            unusualCount = 0;
+                            isClick = true;
+                        }
+                        if (playerMove.isRightClick == true)
+                        {
+                            if (miniGameManager.IsGameOver == true)
+                            {
+                                unusualCount = 0;
+                                isClick = true;
+                            }
+                            else
+                            {
+                                unusualCount += 1;
+                                isClick = true;
+                            }
+                        }
+
+                    }
+                    break;
+                case 6:
+                    if (isClick == false)
+                    {
+                        if (playerMove.isLeftClick == true)
+                        {
+                            unusualCount = 0;
+                            isClick = true;
+                        }
+                        if (playerMove.isRightClick == true)
+                        {
+                            if (miniGameManager.IsGameOver == true)
+                            {
+                                unusualCount = 0;
+                                isClick = true;
+                            }
+                            else
+                            {
+                                unusualCount += 1;
+                                isClick = true;
+                            }
+                        }
+
+                    }
+
+                    if (player.transform.position.x < -5 && player.transform.position.x > -5.5f || player.transform.position.x > 5 && player.transform.position.x < 5.5f)
+                    {
+                        if (unusualManhole1 != null)
+                        {
+                            Destroy(unusualManhole1);
+                        }
+                    }
+
+                    break;
+                case 7:
+                    if (isClick == false)
+                    {
+                        if (playerMove.isLeftClick == true)
+                        {
+                            unusualCount = 0;
+                            isClick = true;
+                        }
+                        if (playerMove.isRightClick == true)
+                        {
+                            if (miniGameManager.IsGameOver == true)
+                            {
+                                unusualCount = 0;
+                                isClick = true;
+                            }
+                            else
+                            {
+                                unusualCount += 1;
+                                isClick = true;
+                            }
+                        }
+
+                    }
+                    break;
             }
 
-            if (unusualCount == 4)
+            if (unusualCount == 6)
             {
                 if (player.transform.position.x <= -7 || player.transform.position.x >= 7)
                 {
