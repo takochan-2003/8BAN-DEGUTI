@@ -16,6 +16,11 @@ public class FadeManager : MonoBehaviour
     public System.Action onFadeInComplete;  // フェードイン完了時のコールバック
     public System.Action onFadeOutComplete; // フェードアウト完了時のコールバック
 
+    // ★追加：BGM
+    [Header("BGM")]
+    public AudioSource bgmSource;
+    public float alphaThreshold = 0.01f; // ほぼ透明扱い
+
     void Start()
     {
         fadeImage = GetComponent<Image>();
@@ -29,6 +34,8 @@ public class FadeManager : MonoBehaviour
         alpha = 1.0f;             // フェードイン用の初期状態
         UpdateAlpha();
         StartFadeIn();            // シーン開始時にフェードイン
+
+        Debug.Log("Fade Start alpha=" + alpha);
     }
 
     void Update()
@@ -87,6 +94,23 @@ public class FadeManager : MonoBehaviour
             Color color = fadeImage.color;
             color.a = alpha;
             fadeImage.color = color;
+        }
+
+        // ★ここだけ差し替えでOK
+        if (bgmSource != null)
+        {
+            bool isDark = alpha > alphaThreshold;
+
+            if (isDark)
+            {
+                // 暗転中は止める
+                if (bgmSource.isPlaying) bgmSource.Stop();
+            }
+            else
+            {
+                // 明るくなったら再生開始（確実に鳴る）
+                if (!bgmSource.isPlaying) bgmSource.Play();
+            }
         }
 
         // ★ 追加：フェード中はミニゲームを一時停止
