@@ -140,6 +140,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 991637994}
     - target: {fileID: 724099013486576528, guid: caabad3c62f4bc444960f969861629db, type: 3}
+      propertyPath: walkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 724099013486576528, guid: caabad3c62f4bc444960f969861629db, type: 3}
       propertyPath: leftClickText
       value: 
       objectReference: {fileID: 7012369665211448369}
