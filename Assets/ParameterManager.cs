@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParameterManager : MonoBehaviour
 {
     // ˆÙ•Ï‚Ì”
-    public static int MAX_UNUSUAL = 4;
+    public static int MAX_UNUSUAL = 7;
     public bool [] unusualType = new bool [MAX_UNUSUAL];
 
     // Start is called before the first frame update
